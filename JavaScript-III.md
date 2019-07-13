@@ -154,7 +154,7 @@ function Person(attributes) {
     homeTown: "Manhattan"
 });
 
-console.log(liz);  // Prints: Person {age: 28, name: "Liz Lemon", homeTown: "Manhattan"}
+console.log(liz);  // Prints: Person {age: 38, name: "Liz Lemon", homeTown: "Manhattan"}
 liz.speak();  // Prints: "Hello, my name is Liz Lemon."
 ```
 
