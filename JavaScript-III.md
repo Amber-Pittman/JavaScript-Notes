@@ -94,3 +94,92 @@ newman.speak.apply(jerry); // prints Hello Newman
 3. By convention, these are Capitalized Functions. For example, `function Person()`.
 4. Instantiated with the `new` keyword. Meaning, it creates a new object.
 5. `this` becomes the object which will be returned by `new`.
+
+### Constructor Function Examples
+
+Example 1
+
+```
+function Animal(object) { // We pass every constructor an object
+  this.name = object.name;   // The this keyword gets returned as the new object
+}
+```
+
+Example 2
+
+```
+function Person(attributes) {
+  this.age = attributes.age;
+  this.name = attributes.name;
+  this.homeTown = attributes.homeTown;
+  this.speak = function() {
+    return `Hello, my name is ${this.name}.`;
+    }
+  };
+  
+  const fred = new Person({ 
+    age: 32,
+    name: "Fred",
+    homeTown: "Bedrock"
+});
+
+console.log(fred);  // Prints: Person {age: 32, name: "Fred", homeTown: "Bedrock", speak: ƒ}
+fred.speak();  // Prints: "Hello, my name is Fred."
+```
+
+## The Object Prototype
+
+1. The mechanism by which all objectscan inherit properties from one another
+2. Allows one to "deliberately" modify an object's properties
+3. Helps to avoid memory problems
+4. Allows one to extend an object's properties to another object.
+5. Can be *VERY DANGEROUS*. You can overwrite an entire object's methods!
+
+Example
+
+```
+function Person(attributes) {
+  this.age = attributes.age;
+  this.name = attributes.name;
+  this.homeTown = attributes.homeTown;
+  };
+  
+  Person.prototype.speak = function() {
+    return `Hello, my name is ${this.name}.`;
+  };
+  
+  const liz = new Person({ 
+    age: 38,
+    name: "Liz Lemon",
+    homeTown: "Manhattan"
+});
+
+console.log(liz);  // Prints: Person {age: 28, name: "Liz Lemon", homeTown: "Manhattan"}
+liz.speak();  // Prints: "Hello, my name is Liz Lemon."
+```
+
+## Prototypal Inheritance (Child)
+
+```
+function Child(childAttributes) { 
+  Person.call(this, childAttributes); // binding the this keyword to Person
+  this.isChild = childAttributes.isChild; // special attribute to Child
+ }
+ 
+ Child.prototype = Object.create(Person.prototype); // Child.prototype to make EXACTLY like the Original/Parent
+ 
+ const pebbles = new Child({ 
+   age: 3,
+   name: "Pebbles",
+   homeTown: "Bedrock"
+  });
+  
+  // NOTE: Because of the Child.prototype above, we can invoke speak() from fred
+  
+  pebbles.speak(); // Prints "Hello, my name is Pebbles"
+```
+
+
+
+
+
