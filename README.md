@@ -10,3 +10,5 @@ Notes I took during my JavaScript lectures at Lambda School
 ## JavaScript III
 https://github.com/Amber-Pittman/JavaScript-Notes/blob/master/JavaScript-III.md
 
+## JavaScript IV
+https://github.com/Amber-Pittman/JavaScript-Notes/blob/master/JavaScript-IV.md
